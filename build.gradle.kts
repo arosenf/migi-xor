@@ -1,8 +1,4 @@
-import org.gradle.api.file.CopySpec
-import org.gradle.jvm.tasks.Jar
-import org.gradle.kotlin.dsl.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import kotlin.collections.set
 
 val mainClass = "XorKt"
 
@@ -43,7 +39,7 @@ val fatJar = task("fatJar", type = Jar::class) {
 }
 
 tasks {
-    "build" {
+    "jar" {
         dependsOn(fatJar)
     }
 }
