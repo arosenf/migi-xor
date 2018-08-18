@@ -9,6 +9,7 @@ const val EXT_SMP = ".smp"
 const val KEY = 'f'.toInt()
 
 fun main(args: Array<String>) {
+    println("StoryMania file converter")
     when {
         args.isEmpty() -> generateSequence(1, { it + 1 })
                 .map { "M" + it.toString().padStart(2, '0') }
