@@ -13,7 +13,10 @@ const val KEY = 'f'.toInt()
 fun main(args: Array<String>) {
     println("StoryMania file converter")
     when {
-        args.isEmpty() && File(INPUT_FOLDER).exists() -> println("converting files in folder '$INPUT_FOLDER'")
+        args.isEmpty() && File(INPUT_FOLDER).exists() -> {
+            println("converting files in folder '$INPUT_FOLDER'")
+            transcode(File(INPUT_FOLDER))
+        }
         args.size > 1 -> println(USEAGE)
         args.size == 1 -> {
             val file = File(args[0])
@@ -28,6 +31,10 @@ fun main(args: Array<String>) {
 
 private fun transcode(file: File){
     if (file.isDirectory){
+        if (file.name.contains(OUTPUT_FOLDER)) {
+            System.err.println("Ignored folder '$OUTPUT_FOLDER'!")
+            System.exit(2)
+        }
         file.listFiles().map {transcode(it) }
     }
     if (file.isFile){
@@ -42,6 +49,7 @@ private fun transcode(file: File){
 }
 
 private fun transcode(file: File, outExtension: String) {
+    println("Converting '$file'")
     val input = file
             .inputStream()
             .buffered()
@@ -57,5 +65,6 @@ private fun transcode(file: File, outExtension: String) {
                     next = input.read()
                 }
             }
+    println("Converted '$file'")
 }
 
