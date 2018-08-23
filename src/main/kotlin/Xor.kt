@@ -6,7 +6,7 @@ const val OUTPUT_FOLDER = "converted"
 const val EXT_MP3 = "mp3"
 const val EXT_SMP = "smp"
 
-const val USEAGE = "please provide only an existing folder or file name"
+const val USAGE = "please provide only an existing folder or file name"
 
 const val KEY = 'f'.toInt()
 
@@ -17,11 +17,11 @@ fun main(args: Array<String>) {
             println("converting files in folder '$INPUT_FOLDER'")
             transcode(File(INPUT_FOLDER))
         }
-        args.size > 1 -> println(USEAGE)
+        args.size > 1 -> println(USAGE)
         args.size == 1 -> {
             val file = File(args[0])
             if (!file.exists()) {
-                System.err.println("File or folder '${args[0]}' does not exist, $USEAGE")
+                System.err.println("File or folder '${args[0]}' does not exist, $USAGE")
                 System.exit(1)
             }
             transcode(file)

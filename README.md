@@ -9,7 +9,7 @@ To compile the classes. A jar is created, but can not be run.
 To run the compiled classes.
 ### gradle jar
 To create a fat jar, which can be run with '''java -jar build/libs/*-fat.jar'''
-## useage
+## usage
 '''gradle jar'''
 '''java -jar build/libs/*-fat.jar [FileName]'''
 where '''[FileName]''' can be:
